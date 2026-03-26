@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int v[1001], pare[1001], impare[1001];
+    int np = 0, ni = 0;
+
+
+    for(int i = 0; i < n; i++) {
+        cin >> v[i];
+        if(v[i] % 2 == 0)
+            pare[np++] = v[i];
+        else
+            impare[ni++] = v[i];
+    }
+
+
+    for(int i = 0; i < np - 1; i++) {
+        for(int j = i + 1; j < np; j++) {
+            if(pare[i] > pare[j]) {
+                int aux = pare[i];
+                pare[i] = pare[j];
+                pare[j] = aux;
+            }
+        }
+    }
+
+
+    for(int i = 0; i < ni - 1; i++) {
+        for(int j = i + 1; j < ni; j++) {
+            if(impare[i] > impare[j]) {
+                int aux = impare[i];
+                impare[i] = impare[j];
+                impare[j] = aux;
+            }
+        }
+    }
+
+     for(int i = 0; i < np; i++)
+        cout << pare[i] << " ";
+
+    for(int i = 0; i < ni; i++)
+        cout << impare[i] << " ";
+
+    return 0;
+}

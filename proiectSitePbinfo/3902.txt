@@ -1,0 +1,40 @@
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream fin("halfsort2.in");
+    ofstream fout("halfsort2.out");
+
+    int n, v[101];
+    fin >> n;
+
+    for(int i = 1; i <= n; i++)
+        fin >> v[i];
+
+    for(int i = 1; i < n; i++) {
+        for(int j = i + 1; j <= n; j++) {
+
+                       if(i % 2 == 1 && j % 2 == 1) {
+                if(v[i] < v[j]) {
+                    int aux = v[i];
+                    v[i] = v[j];
+                    v[j] = aux;
+                }
+            }
+
+                      if(i % 2 == 0 && j % 2 == 0) {
+                if(v[i] > v[j]) {
+                    int aux = v[i];
+                    v[i] = v[j];
+                    v[j] = aux;
+                }
+            }
+
+        }
+    }
+
+    for(int i = 1; i <= n; i++)
+        fout << v[i] << " ";
+
+    return 0;
+}
