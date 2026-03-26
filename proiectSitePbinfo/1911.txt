@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    long long v[101];
+    int poz[101];
+
+    for(int i = 1; i <= n; i++) {
+        cin >> v[i];
+        poz[i] = i;
+    }
+
+    for(int i = 1; i < n; i++) {
+        for(int j = i + 1; j <= n; j++) {
+            if(v[i] > v[j] || (v[i] == v[j] && poz[i] > poz[j])) {
+                
+                long long aux = v[i];
+                v[i] = v[j];
+                v[j] = aux;
+
+                int aux2 = poz[i];
+                poz[i] = poz[j];
+                poz[j] = aux2;
+            }
+        }
+    }
+    for(int i = 1; i <= n; i++) {
+        cout << v[i] << " " << poz[i] << " ";
+    }
+
+    return 0;
+}
